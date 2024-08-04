@@ -25,7 +25,7 @@ const FeedList = ({ feeds, setFeed }) => {
       <select
         value={selectedFeed}
         onChange={handleSelectChange}
-        className="block w-full px-3 py-2 text-lg border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+        className="block w-full px-3 py-2 text-lg border border-gray-300 dark:border-gray-700 rounded-md shadow-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
       >
         <option value="">Select a feed</option>
         {feeds.map((feed, index) => (
