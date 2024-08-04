@@ -1,13 +1,10 @@
-import Link from 'next/link';
-import ThemeToggle from './ThemeToggle';
-
 const Navbar = () => {
   return (
     <nav className="bg-amber-500 text-white py-4">
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link href="/" legacyBehavior>
-          <a className="text-xl font-bold">RSS Feed Reader</a>
-        </Link>
+      <div className="bg-amber-500 text-white text-center">
+        <a href="https://rede.io/?utm_source=rss-makr-io" className="font-bold hover:underline">
+          Check out 📚 Rede.io for your daily tech newsletter!
+        </a>
       </div>
     </nav>
   );
