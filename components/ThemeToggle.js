@@ -1,26 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState('light');
-
-  useEffect(() => {
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) {
-      setTheme(storedTheme);
-      document.documentElement.classList.add(storedTheme);
-    } else {
-      document.documentElement.classList.add('light');
-      localStorage.setItem('theme', 'light');
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    document.documentElement.classList.remove(theme);
-    document.documentElement.classList.add(newTheme);
-    localStorage.setItem('theme', newTheme);
-  };
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <div className="flex items-center">

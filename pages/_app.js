@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import * as gtag from '../lib/gtag';
 import Head from 'next/head';
+import { ThemeProvider } from '../context/ThemeContext';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -18,7 +19,7 @@ function MyApp({ Component, pageProps }) {
   }, [router.events]);
 
   return (
-    <>
+    <ThemeProvider>
       <Head>
         <title>RSS Feed Reader</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -34,7 +35,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <Component {...pageProps} />
-    </>
+    </ThemeProvider>
   );
 }
 
