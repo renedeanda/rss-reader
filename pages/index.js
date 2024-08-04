@@ -5,7 +5,7 @@ import ArticleList from '../components/ArticleList';
 import FeedList from '../components/FeedList';
 
 const feeds = [
-  { name: "TechCrunch", url: "https://techcrunch.com/feed/" },
+  { name: "TechCrunch", url: "http://feeds.feedburner.com/TechCrunch/" },
   { name: "Wired", url: "https://www.wired.com/feed/rss" },
   { name: "The Verge", url: "https://www.theverge.com/rss/index.xml" },
   { name: "Engadget", url: "https://www.engadget.com/rss.xml" },

@@ -4,22 +4,22 @@ const ThemeToggle = () => {
   const [theme, setTheme] = useState('light');
 
   useEffect(() => {
-    if (localStorage.getItem('theme')) {
-      setTheme(localStorage.getItem('theme'));
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      setTheme(storedTheme);
+      document.documentElement.classList.add(storedTheme);
+    } else {
+      document.documentElement.classList.add('light');
+      localStorage.setItem('theme', 'light');
     }
   }, []);
 
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    document.documentElement.classList.remove(theme);
+    document.documentElement.classList.add(newTheme);
+    localStorage.setItem('theme', newTheme);
   };
 
   return (
