@@ -8,7 +8,6 @@ const Navbar = () => {
         <Link href="/" legacyBehavior>
           <a className="text-xl font-bold">RSS Feed Reader</a>
         </Link>
-        <ThemeToggle />
       </div>
     </nav>
   );

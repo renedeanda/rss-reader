@@ -21,7 +21,7 @@ const FeedList = ({ feeds, setFeed }) => {
 
   return (
     <div className="my-4">
-      <h2 className="text-2xl font-bold mb-2">Popular Tech Feeds</h2>
+      <h2 className="text-2xl font-bold mb-2">Popular RSS Feeds</h2>
       <select
         value={selectedFeed}
         onChange={handleSelectChange}
