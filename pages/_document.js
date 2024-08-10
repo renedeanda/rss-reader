@@ -8,19 +8,6 @@ export default function Document() {
         <meta name="description" content="A beautiful RSS Feed Reader" />
         <meta charSet="UTF-8" />
         <meta name="theme-color" content="#f59e0b" />
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`}></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.GA_TRACKING_ID}', {
-                page_path: window.location.pathname,
-              });
-            `,
-          }}
-        />
       </Head>
       <body>
         <Main />
