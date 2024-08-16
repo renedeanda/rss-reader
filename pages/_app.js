@@ -2,8 +2,8 @@ import '../styles/globals.css';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import { ThemeProvider } from '../context/ThemeContext';
 import Script from 'next/script';
+import { ThemeProvider } from '../context/ThemeContext';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }) {
         page_path: url,
       });
     };
+
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange);
@@ -30,30 +31,29 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:title" content="RSS Feed Reader" />
         <meta property="og:description" content="Stay up to date with the latest tech news from various sources in a beautiful RSS feed reader." />
         <meta property="og:image" content="/favicon.svg" />
-        <meta property="og:url" content="https://yourwebsite.com" />
+        <meta property="og:url" content="https://rss.makr.io" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="RSS Feed Reader" />
         <meta name="twitter:description" content="Stay up to date with the latest tech news from various sources in a beautiful RSS feed reader." />
         <meta name="twitter:image" content="/favicon.svg" />
-        <meta name="twitter:card" content="summary_large_image" />
-      
+      </Head>
+
       {/* Global Site Tag (gtag.js) - Google Analytics */}
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
       />
-      <Script
-        id="gtag-init"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
-          `,
-        }}
-      />
-      </Head>
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+            page_path: window.location.pathname,
+          });
+        `}
+      </Script>
+
       <Component {...pageProps} />
     </ThemeProvider>
   );
